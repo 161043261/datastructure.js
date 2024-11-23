@@ -1,4 +1,5 @@
 # @datastructures-js/heap
+
 [![npm](https://img.shields.io/npm/v/@datastructures-js/heap.svg)](https://www.npmjs.com/package/@datastructures-js/heap)
 [![npm](https://img.shields.io/npm/dm/@datastructures-js/heap.svg)](https://www.npmjs.com/package/@datastructures-js/heap) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/@datastructures-js/heap)
 
@@ -7,40 +8,43 @@ A javascript implementation for Heap data structure. Heap base class allows crea
 <img src="https://user-images.githubusercontent.com/6517308/121813242-859a9700-cc6b-11eb-99c0-49e5bb63005b.jpg">
 
 # contents
-* [Install](#install)
-* [require](#require)
-* [import](#import)
-* [API](#api)
-  * [constructor](#constructor)
-  * [insert (push)](#insert-push)
-  * [extractRoot (pop)](#extractroot-pop)
-  * [root (top)](#root-top)
-  * [leaf](#leaf)
-  * [size](#size)
-  * [sort](#sort)
-  * [isValid](#isvalid)
-  * [fix](#fix)
-  * [clone](#clone)
-  * [clear](#clear)
-  * [heapify](#heapify)
-  * [isHeapified](#isheapified)
-  * [Symbol.iterator](#symboliterator)
-  * [toArray](#toarray)
- * [Build](#build)
- * [License](#license)
 
+- [Install](#install)
+- [require](#require)
+- [import](#import)
+- [API](#api)
+  - [constructor](#constructor)
+  - [insert (push)](#insert-push)
+  - [extractRoot (pop)](#extractroot-pop)
+  - [root (top)](#root-top)
+  - [leaf](#leaf)
+  - [size](#size)
+  - [sort](#sort)
+  - [isValid](#isvalid)
+  - [fix](#fix)
+  - [clone](#clone)
+  - [clear](#clear)
+  - [heapify](#heapify)
+  - [isHeapified](#isheapified)
+  - [Symbol.iterator](#symboliterator)
+  - [toArray](#toarray)
+- [Build](#build)
+- [License](#license)
 
 ## install
+
 ```sh
 npm install --save @datastructures-js/heap
 ```
 
 ## require
+
 ```js
-const { Heap, MinHeap, MaxHeap } = require('@datastructures-js/heap');
+const { Heap, MinHeap, MaxHeap } = require("@datastructures-js/heap");
 ```
 
 ## import
+
 ```js
 import {
   Heap,
@@ -48,7 +52,7 @@ import {
   MaxHeap,
   ICompare,
   IGetCompareValue,
-} from '@datastructures-js/heap';
+} from "@datastructures-js/heap";
 ```
 
 ## API
@@ -56,9 +60,11 @@ import {
 ### constructor
 
 #### Heap
+
 constructor requires a compare function that tells the heap when to swap values. Function works similar to javascript sort callback, bigger than 0, means, swap elements.
 
 ##### TS
+
 ```ts
 interface ICar {
   year: number;
@@ -81,6 +87,7 @@ const carsHeap = new Heap<ICar>(compareCars);
 ```
 
 ##### JS
+
 ```js
 const compareCars = (a, b) => {
   if (a.year > b.year) {
@@ -98,9 +105,11 @@ const carsHeap = new Heap(compareCars);
 ```
 
 #### MinHeap, MaxHeap
+
 constructor does not require a compare function and it's useful when working with primitive values like numbers, it can also be used with objects by passing a callback that indicates what object prop will be used in comparison.
 
 ##### TS
+
 ```ts
 const numbersHeap = new MinHeap<number>();
 
@@ -113,12 +122,14 @@ const bidsHeap = new MaxHeap<IBid>(getBidCompareValue);
 ```
 
 ##### JS
+
 ```js
 const numbersHeap = new MinHeap();
 const bidsHeap = new MaxHeap((bid) => bid.value);
 ```
 
 ### insert (push)
+
 inserts a value in a correct position into the heap in O(log(n)) runtime.
 
 ```js
@@ -129,7 +140,7 @@ const cars = [
   { year: 2017, price: 50000 },
   { year: 2013, price: 25000 },
   { year: 2015, price: 40000 },
-  { year: 2022, price: 70000 }
+  { year: 2022, price: 70000 },
 ];
 cars.forEach((car) => carsHeap.insert(car));
 
@@ -143,12 +154,13 @@ const bids = [
   { id: 4, value: 1500 },
   { id: 5, value: 12000 },
   { id: 6, value: 4000 },
-  { id: 7, value: 8000 }
+  { id: 7, value: 8000 },
 ];
 bids.forEach((bid) => bidsHeap.insert(bid));
 ```
 
 ### extractRoot (pop)
+
 removes and returns the root (top) value of the heap in O(log(n)) runtime.
 
 ```js
@@ -193,6 +205,7 @@ while (!bidsHeap.isEmpty()) {
 ```
 
 ### root (top)
+
 returns the root node without removing it.
 
 ```js
@@ -207,6 +220,7 @@ console.log(bidsHeap.top()); // { id: 2, value: 20000 }
 ```
 
 ### leaf
+
 returns a leaf node in the heap.
 
 ```js
@@ -216,6 +230,7 @@ console.log(bidsHeap.leaf()); // { id: 1, value: 1000 }
 ```
 
 ### size
+
 returns the number of nodes in the heap.
 
 ```js
@@ -225,7 +240,8 @@ console.log(bidsHeap.size()); // 7
 ```
 
 ### sort
-returns a list of sorted values in O(n*log(n)) runtime, based on the comparison logic, and in reverse order. In MaxHeap it returns the list of sorted values in ascending order, and in descending order in MinHeap. sort mutates the node positions in the heap, to prevent that, you can sort a clone of the heap.
+
+returns a list of sorted values in O(n\*log(n)) runtime, based on the comparison logic, and in reverse order. In MaxHeap it returns the list of sorted values in ascending order, and in descending order in MinHeap. sort mutates the node positions in the heap, to prevent that, you can sort a clone of the heap.
 
 ```js
 console.log(carsHeap.sort());
@@ -259,6 +275,7 @@ console.log(bidsHeap.sort());
 ```
 
 ### isValid
+
 checks if the heap is valid (all nodes are positioned correctly) in log(n) runtime.
 
 ```js
@@ -269,6 +286,7 @@ console.log(bidsHeap.isValid()); // false
 ```
 
 ### fix
+
 fixes the heap by making the necessary swaps between nodes in O(n) runtime.
 
 ```js
@@ -280,6 +298,7 @@ console.log(bidsHeap.fix().isValid()); // true
 ```
 
 ### clone
+
 creates a shallow copy of the heap.
 
 ```js
@@ -319,6 +338,7 @@ console.log(bidsHeap.isValid()); // true
 ```
 
 ### clear
+
 clears the heap.
 
 ```js
@@ -332,9 +352,11 @@ console.log(bidsHeap.size()); // 0
 ```
 
 ### heapify
+
 converts a list of values into a heap without using an additional space in O(n) runtime.
 
 ##### TS
+
 ```ts
 const heapifiedCars = Heap.heapify<ICar>(cars, compareCars);
 console.log(heapifiedCars.isValid()); // true
@@ -374,6 +396,7 @@ console.log(bids);
 ```
 
 ##### JS
+
 ```ts
 const heapifiedCars = Heap.heapify(cars, compareCars);
 console.log(heapifiedCars.isValid()); // true
@@ -417,9 +440,11 @@ console.log(bids);
 ```
 
 ### isHeapified
+
 Checks if a given list is heapified.
 
 #### TS
+
 ```ts
 console.log(Heap.isHeapified<ICar>(cars, compareCars)); // true
 console.log(MinHeap.isHeapified<number>(numbers)); // true
@@ -427,6 +452,7 @@ console.log(MaxHeap.isHeapified<IBid>(bids, (bid) => bid.value)); // true
 ```
 
 #### JS
+
 ```js
 console.log(Heap.isHeapified(cars, compareCars)); // true
 console.log(MinHeap.isHeapified(numbers)); // true
@@ -434,7 +460,9 @@ console.log(MaxHeap.isHeapified(bids, (bid) => bid.value)); // true
 ```
 
 ### Symbol.iterator
+
 The heaps implement a Symbol.iterator that makes them iterable on `pop`.
+
 ```js
 console.log([...carsHeap]);
 /*
@@ -486,7 +514,6 @@ console.log(carsHeap.toArray());
 ]
 */
 
-
 console.log(numbersHeap.toArray()); // [5, -5, -2, -1, 0, 3, 4]
 
 console.log(bidsHeap.toArray());
@@ -502,7 +529,6 @@ console.log(bidsHeap.toArray());
 { id: 3, value: 1000 }
 ]
 */
-
 ```
 
 ## Build
@@ -512,4 +538,5 @@ grunt build
 ```
 
 ## License
+
 The MIT License. Full License is [here](https://github.com/datastructures-js/heap/blob/master/LICENSE)

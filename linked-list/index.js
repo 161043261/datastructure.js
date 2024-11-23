@@ -1,12 +1,12 @@
-const { LinkedListNode } = require('./src/linkedListNode');
-const { LinkedList } = require('./src/linkedList');
+const { LinkedListNode } = require("./linkedListNode");
+const { LinkedList } = require("./linkedList");
 
-const { DoublyLinkedListNode } = require('./src/doublyLinkedListNode');
-const { DoublyLinkedList } = require('./src/doublyLinkedList');
+const { DoublyLinkedListNode } = require("./doublyLinkedListNode");
+const { DoublyLinkedList } = require("./doublyLinkedList");
 
 module.exports = {
   LinkedListNode,
   LinkedList,
   DoublyLinkedListNode,
-  DoublyLinkedList
+  DoublyLinkedList,
 };

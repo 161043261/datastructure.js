@@ -1,5 +1,5 @@
-import { Trie } from './src/trie';
-import { TrieNode } from './src/trieNode';
+import { Trie } from "./trie";
+import { TrieNode } from "./trieNode";
 
-export { TrieNode }
-export { Trie }
+export { TrieNode };
+export { Trie };

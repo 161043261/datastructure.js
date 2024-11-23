@@ -1,3 +1,3 @@
-const { Deque } = require('./src/deque');
+const { Deque } = require("./deque");
 
 exports.Deque = Deque;

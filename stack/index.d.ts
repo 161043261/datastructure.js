@@ -1,4 +1,3 @@
-import { Stack } from './src/stack';
+import { Stack } from "./stack";
 
-export { Stack }
-
+export { Stack };

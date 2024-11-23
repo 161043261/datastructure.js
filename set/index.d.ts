@@ -1,3 +1,3 @@
-import { EnhancedSet } from './src/enhancedSet';
+import { EnhancedSet } from "./enhancedSet";
 
-export { EnhancedSet }
+export { EnhancedSet };

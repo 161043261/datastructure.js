@@ -1,10 +1,10 @@
-import { PriorityQueue } from './src/priorityQueue';
-import { MinPriorityQueue } from './src/minPriorityQueue';
-import { MaxPriorityQueue } from './src/maxPriorityQueue';
-import { ICompare, IGetCompareValue } from '@datastructures-js/heap';
+import { PriorityQueue } from "./priorityQueue";
+import { MinPriorityQueue } from "./minPriorityQueue";
+import { MaxPriorityQueue } from "./maxPriorityQueue";
+import { ICompare, IGetCompareValue } from "../heap";
 
-export { PriorityQueue }
-export { MinPriorityQueue }
-export { MaxPriorityQueue }
-export { ICompare }
-export { IGetCompareValue }
+export { PriorityQueue };
+export { MinPriorityQueue };
+export { MaxPriorityQueue };
+export { ICompare };
+export { IGetCompareValue };

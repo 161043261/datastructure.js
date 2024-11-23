@@ -1,3 +1,3 @@
-import { Queue }  from './src/queue';
+import { Queue } from "./queue";
 
-export { Queue }
+export { Queue };

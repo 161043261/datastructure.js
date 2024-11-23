@@ -8,23 +8,24 @@ A performant queue implementation in javascript.
 <img src="https://user-images.githubusercontent.com/6517308/121813242-859a9700-cc6b-11eb-99c0-49e5bb63005b.jpg">
 
 # Contents
-* [Install](#install)
-* [require](#require)
-* [import](#import)
-* [API](#api)
-  * [constructor](#constructor)
-  * [Queue.fromArray](#queuefromarray)
-  * [enqueue (push)](#enqueue-push)
-  * [front](#front)
-  * [back](#back)
-  * [dequeue (pop)](#dequeue-pop)
-  * [isEmpty](#isEmpty)
-  * [size](#size)
-  * [clone](#clone)
-  * [toArray](#toarray)
-  * [clear](#clear)
-* [Build](#build)
-* [License](#license)
+
+- [Install](#install)
+- [require](#require)
+- [import](#import)
+- [API](#api)
+  - [constructor](#constructor)
+  - [Queue.fromArray](#queuefromarray)
+  - [enqueue (push)](#enqueue-push)
+  - [front](#front)
+  - [back](#back)
+  - [dequeue (pop)](#dequeue-pop)
+  - [isEmpty](#isEmpty)
+  - [size](#size)
+  - [clone](#clone)
+  - [toArray](#toarray)
+  - [clear](#clear)
+- [Build](#build)
+- [License](#license)
 
 ## Install
 
@@ -35,13 +36,13 @@ npm install --save @datastructures-js/queue
 ### require
 
 ```js
-const { Queue } = require('@datastructures-js/queue');
+const { Queue } = require("@datastructures-js/queue");
 ```
 
 ### import
 
 ```js
-import { Queue } from '@datastructures-js/queue';
+import { Queue } from "@datastructures-js/queue";
 ```
 
 ## API
@@ -49,6 +50,7 @@ import { Queue } from '@datastructures-js/queue';
 ### constructor
 
 ##### JS
+
 ```js
 // empty queue
 const queue = new Queue();
@@ -58,6 +60,7 @@ const queue = new Queue([1, 2, 3]);
 ```
 
 ##### TS
+
 ```js
 // empty queue
 const queue = new Queue<number>();
@@ -69,6 +72,7 @@ const queue = new Queue<number>([1, 2, 3]);
 ### Queue.fromArray
 
 ##### JS
+
 ```js
 // empty queue
 const queue = Queue.fromArray([]);
@@ -82,16 +86,18 @@ const queue = Queue.fromArray(list.slice());
 ```
 
 ##### TS
+
 ```js
 // empty queue
-const queue = Queue.fromArray<number>([]);
+const queue = Queue.fromArray < number > [];
 
 // with elements
 const list = [10, 3, 8, 40, 1];
-const queue = Queue.fromArray<number>(list);
+const queue = Queue.fromArray < number > list;
 ```
 
 ### enqueue (push)
+
 adds an element to the back of the queue.
 
 ```js
@@ -99,6 +105,7 @@ queue.enqueue(10).enqueue(20); // or queue.push(123)
 ```
 
 ### front
+
 peeks on the front element of the queue.
 
 ```js
@@ -106,6 +113,7 @@ console.log(queue.front()); // 10
 ```
 
 ### back
+
 peeks on the back element in the queue.
 
 ```js
@@ -113,6 +121,7 @@ console.log(queue.back()); // 20
 ```
 
 ### dequeue (pop)
+
 removes and returns the front element of the queue in O(1) runtime.
 
 ```js
@@ -136,6 +145,7 @@ dequeuing 1 million elements in Node v14
 </table>
 
 ### isEmpty
+
 checks if the queue is empty.
 
 ```js
@@ -143,6 +153,7 @@ console.log(queue.isEmpty()); // false
 ```
 
 ### size
+
 returns the number of elements in the queue.
 
 ```js
@@ -150,11 +161,12 @@ console.log(queue.size()); // 1
 ```
 
 ### clone
+
 creates a shallow copy of the queue.
 
 ```js
-const queue = Queue.fromArray([{ id: 2 }, { id: 4 } , { id: 8 }]);
-const clone =  queue.clone();
+const queue = Queue.fromArray([{ id: 2 }, { id: 4 }, { id: 8 }]);
+const clone = queue.clone();
 
 clone.dequeue();
 
@@ -162,7 +174,8 @@ console.log(queue.front()); // { id: 2 }
 console.log(clone.front()); // { id: 4 }
 ```
 
-### toArray 
+### toArray
+
 returns a copy of the remaining elements as an array.
 
 ```js
@@ -171,6 +184,7 @@ console.log(queue.toArray()); // [20, 4, 2]
 ```
 
 ### clear
+
 clears all elements from the queue.
 
 ```js
@@ -185,4 +199,5 @@ grunt build
 ```
 
 ## License
+
 The MIT License. Full License is [here](https://github.com/datastructures-js/queue/blob/master/LICENSE)

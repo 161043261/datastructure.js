@@ -1,9 +1,9 @@
-import { LinkedList } from './src/linkedList';
-import { LinkedListNode } from './src/linkedListNode';
-import { DoublyLinkedList } from './src/doublyLinkedList';
-import { DoublyLinkedListNode } from './src/doublyLinkedListNode';
+import { LinkedList } from "./linkedList";
+import { LinkedListNode } from "./linkedListNode";
+import { DoublyLinkedList } from "./doublyLinkedList";
+import { DoublyLinkedListNode } from "./doublyLinkedListNode";
 
-export { LinkedList }
-export { LinkedListNode }
-export { DoublyLinkedList }
-export { DoublyLinkedListNode }
+export { LinkedList };
+export { LinkedListNode };
+export { DoublyLinkedList };
+export { DoublyLinkedListNode };

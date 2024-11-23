@@ -7,31 +7,32 @@ A heap-based implementation of priority queue in javascript with typescript supp
 
 <img src="https://user-images.githubusercontent.com/6517308/121813242-859a9700-cc6b-11eb-99c0-49e5bb63005b.jpg">
 
-
 #### NOTE: LeetCode is using previous versions of the lib [here](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages-). I am maintaining v4 & v5 for this purpose
+
 - [v4](https://github.com/datastructures-js/priority-queue/tree/v4)
 - [v5](https://github.com/datastructures-js/priority-queue/tree/v5)
 
 # Contents (v6)
-* [Install](#install)
-* [require](#require)
-* [import](#import)
-* [API](#api)
-  * [constructor](#constructor)
-  * [fromArray](#fromarray)
-  * [enqueue (push)](#enqueue-push)
-  * [front](#front)
-  * [back](#back)
-  * [dequeue (pop)](#dequeue-pop)
-  * [contains](#contains)
-  * [remove](#remove)
-  * [isEmpty](#isEmpty)
-  * [size](#size)
-  * [toArray](#toarray)
-  * [Symbol.iterator](#symboliterator)
-  * [clear](#clear)
- * [Build](#build)
- * [License](#license)
+
+- [Install](#install)
+- [require](#require)
+- [import](#import)
+- [API](#api)
+  - [constructor](#constructor)
+  - [fromArray](#fromarray)
+  - [enqueue (push)](#enqueue-push)
+  - [front](#front)
+  - [back](#back)
+  - [dequeue (pop)](#dequeue-pop)
+  - [contains](#contains)
+  - [remove](#remove)
+  - [isEmpty](#isEmpty)
+  - [size](#size)
+  - [toArray](#toarray)
+  - [Symbol.iterator](#symboliterator)
+  - [clear](#clear)
+- [Build](#build)
+- [License](#license)
 
 ## Install
 
@@ -40,6 +41,7 @@ npm install --save @datastructures-js/priority-queue
 ```
 
 ## API
+
 PriorityQueue class allows using a compare function between values. MinPriorityQueue & MaxPriorityQueue can be used for primitive values and objects with known comparison prop.
 
 ### require
@@ -49,7 +51,7 @@ const {
   PriorityQueue,
   MinPriorityQueue,
   MaxPriorityQueue,
-} = require('@datastructures-js/priority-queue');
+} = require("@datastructures-js/priority-queue");
 ```
 
 ### import
@@ -61,14 +63,17 @@ import {
   MaxPriorityQueue,
   ICompare,
   IGetCompareValue,
-} from '@datastructures-js/priority-queue';
+} from "@datastructures-js/priority-queue";
 ```
 
 ### constructor
+
 #### PriorityQueue
+
 constructor requires a compare function that works similar to javascript sort callback, returning a number bigger than 0, means swap elements.
 
 ##### TS
+
 ```ts
 interface ICar {
   year: number;
@@ -91,25 +96,27 @@ const carsQueue = new PriorityQueue<ICar>(compareCars);
 ```
 
 ##### JS
+
 ```js
 const carsQueue = new PriorityQueue((a, b) => {
-    if (a.year > b.year) {
-      return -1;
-    }
-    if (a.year < b.year) {
-      // prioratize newest cars
-      return 1;
-    }
-    // with lowest price
-    return a.price < b.price ? -1 : 1;
+  if (a.year > b.year) {
+    return -1;
   }
-);
+  if (a.year < b.year) {
+    // prioratize newest cars
+    return 1;
+  }
+  // with lowest price
+  return a.price < b.price ? -1 : 1;
+});
 ```
 
 #### MinPriorityQueue, MaxPriorityQueue
+
 constructor requires a callback for object values to indicate which prop is used for comparison, and does not require any for primitive values like numbers or strings.
 
 ##### TS
+
 ```ts
 const numbersQueue = new MinPriorityQueue<number>();
 
@@ -122,16 +129,20 @@ const bidsQueue = new MaxPriorityQueue<IBid>(getBidValue);
 ```
 
 ##### JS
+
 ```js
 const numbersQueue = new MinPriorityQueue();
 const bidsQueue = new MaxPriorityQueue((bid) => bid.value);
 ```
 
 ### fromArray
+
 If the queue is being created from an existing array, and there is no desire to use an extra O(n) space, this static function can turn an array into a priority queue in O(n) runtime.
 
 #### PriorityQueue
+
 ##### TS
+
 ```ts
 const numbers = [3, -2, 5, 0, -1, -5, 4];
 
@@ -145,6 +156,7 @@ console.log(numbers); // [ 0, 3, 4, 5 ]
 ```
 
 ##### JS
+
 ```ts
 const numbers = [3, -2, 5, 0, -1, -5, 4];
 
@@ -158,7 +170,9 @@ console.log(numbers); // [ 0, 3, 4, 5 ]
 ```
 
 #### MinPriorityQueue, MaxPriorityQueue
+
 ##### TS
+
 ```ts
 const numbers = [3, -2, 5, 0, -1, -5, 4];
 
@@ -172,6 +186,7 @@ console.log(numbers); // [ 0, -1, -5, -2 ]
 ```
 
 ##### JS
+
 ```ts
 const numbers = [3, -2, 5, 0, -1, -5, 4];
 
@@ -185,6 +200,7 @@ console.log(numbers); // [ 0, -1, -5, -2 ]
 ```
 
 ### enqueue (push)
+
 adds a value based on its comparison with other values in the queue in O(log(n)) runtime.
 
 ```js
@@ -195,7 +211,7 @@ const cars = [
   { year: 2017, price: 50000 },
   { year: 2013, price: 25000 },
   { year: 2015, price: 40000 },
-  { year: 2022, price: 70000 }
+  { year: 2022, price: 70000 },
 ];
 cars.forEach((car) => carsQueue.enqueue(car));
 
@@ -209,12 +225,13 @@ const bids = [
   { id: 4, value: 1500 },
   { id: 5, value: 12000 },
   { id: 6, value: 4000 },
-  { id: 7, value: 8000 }
+  { id: 7, value: 8000 },
 ];
 bids.forEach((bid) => bidsQueue.enqueue(bid));
 ```
 
 ### front
+
 peeks on the value with highest priority in the queue.
 
 ```js
@@ -224,6 +241,7 @@ console.log(bidsQueue.front()); // { id: 2, value: 20000 }
 ```
 
 ### back
+
 peeks on the value with a lowest priority in the queue.
 
 ```js
@@ -233,6 +251,7 @@ console.log(bidsQueue.back()); // { id: 1, value: 1000 }
 ```
 
 ### dequeue (pop)
+
 removes and returns the element with highest priority in the queue in O(log(n)) runtime.
 
 ```js
@@ -250,7 +269,8 @@ console.log(bidsQueue.pop()); // { id: 7, value: 8000 }
 ```
 
 ### contains
-checks if the queue contains an element that meet a criteria in O(n*log(n)) runtime.
+
+checks if the queue contains an element that meet a criteria in O(n\*log(n)) runtime.
 
 ```js
 carsQueue.contains((car) => car.price === 50000); // true
@@ -260,7 +280,8 @@ numbersQueue.contains((n) => n === 10); // false
 ```
 
 ### remove
-removes all elements that meet a criteria in O(n*log(n)) runtime and returns a list of the removed elements.
+
+removes all elements that meet a criteria in O(n\*log(n)) runtime and returns a list of the removed elements.
 
 ```js
 carsQueue.remove((car) => car.price === 35000); // [{ year: 2013, price: 35000 }]
@@ -271,6 +292,7 @@ bidsQueue.remove((bid) => bid.id === 3); // [{ id: 3, value: 1000 }]
 ```
 
 ### isEmpty
+
 checks if the queue is empty.
 
 ```js
@@ -280,6 +302,7 @@ console.log(bidsQueue.isEmpty()); // false
 ```
 
 ### size
+
 returns the number of elements in the queue.
 
 ```js
@@ -289,7 +312,8 @@ console.log(bidsQueue.size()); // 3
 ```
 
 ### toArray
-returns a sorted array of elements by their priorities from highest to lowest in O(n*log(n)) runtime.
+
+returns a sorted array of elements by their priorities from highest to lowest in O(n\*log(n)) runtime.
 
 ```js
 console.log(carsQueue.toArray());
@@ -314,7 +338,9 @@ console.log(bidsQueue.toArray());
 ```
 
 ### Symbol.iterator
+
 The queues implement a Symbol.iterator that makes them iterable on `pop`.
+
 ```js
 console.log([...carsQueue]);
 /*
@@ -341,6 +367,7 @@ console.log(bidsHeap.size()); // 0
 ```
 
 ### clear
+
 clears all elements in the queue.
 
 ```js
@@ -364,9 +391,11 @@ console.log(bidsQueue.isEmpty()); // true
 ```
 
 ## Build
+
 ```
 grunt build
 ```
 
 ## License
+
 The MIT License. Full License is [here](https://github.com/datastructures-js/priority-queue/blob/master/LICENSE)

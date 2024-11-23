@@ -1,3 +1,3 @@
-const { Queue } = require('./src/queue');
+const { Queue } = require("./queue");
 
 exports.Queue = Queue;

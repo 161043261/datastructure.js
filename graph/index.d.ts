@@ -1,5 +1,5 @@
-import { Graph } from './src/graph';
-import { DirectedGraph } from './src/directedGraph';
+import { Graph } from "./src/graph";
+import { DirectedGraph } from "./src/directedGraph";
 
-export { Graph }
-export { DirectedGraph }
+export { Graph };
+export { DirectedGraph };

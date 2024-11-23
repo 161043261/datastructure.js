@@ -1,3 +1,3 @@
-import { Deque }  from './src/deque';
+import { Deque } from "./deque";
 
-export { Deque }
+export { Deque };
